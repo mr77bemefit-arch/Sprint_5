@@ -1,0 +1,25 @@
+from locator import *
+from fixture import *
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+
+#проверка переходов по разделам "Соусы" - "Начинки" - "Булки"
+driver = webdriver.Chrome()
+driver.get(URL)
+#переходим в раздел "Соусы"
+driver.find_element(*CHAPTER_SAUCES).click()
+#проверяем переход в раздел "Соусы"(на странице есть название первого соуса "Соус Spicy-X")
+WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((TEXT_SAUS_SPICY)))
+#переходим в раздел "Булки"
+driver.find_element(*CHAPTER_ROLLS).click()
+#проверяем переход в раздел "Булки"(на странице есть название первой булки "Флюоресцентная булка R2-D3")
+WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((TEXT_BLUR_ROLL)))
+#переходим в раздел "Начинки"
+driver.find_element(*CHAPTER_FILLINGS).click()
+#проверяем переход в раздел "Начинки"(на странице есть название первой начинки "Мясо бессмертных моллюсков Protostomia")
+WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((TEXT_FISH_MEAT)))
+driver.quit()
+
+

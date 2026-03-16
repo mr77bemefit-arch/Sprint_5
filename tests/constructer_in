@@ -18,36 +18,36 @@ driver.find_element(*PASSWORD_FIELD).send_keys(new_password)
 driver.find_element(*LOGIN_BUTTON).click()
 driver.quit()
 
-#проверка перехода по клику на «Конструктор» из Личного кабинета:
-#вход по кнопке «Войти в аккаунт» на главной:
-driver = webdriver.Chrome()
-driver.get(URL)
-driver.find_element(*ENTER_IN_BUTTON).click()
-#вводим данные зарегестрированного пользователя в поля "Email" и "Пароль" и кликаем кнопку "Войти"
-driver.find_element(*EMAIL_FIELD_ENTER).send_keys(new_email)
-driver.find_element(*PASSWORD_FIELD_ENTER).send_keys(new_password)
-driver.find_element(*ENTER_BUTTON_ENTER).click()
-#клик на кнопку "Личный кабинет"
-driver.find_element(*BUTTON_MY_CABINET).click()
-#клик на кнопку "Конструктор"
-driver.find_element(*BUTTON_CONSTRUCTOR).click()
-#проверяем успешный вход в Конструктор(на странице присутствует кнопка "Оформить заказ")
-WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((CHECK_OUT_BUTTON)))
-driver.quit()
+class Test_Constructer_In:
+    #проверка перехода по клику на «Конструктор» из Личного кабинета:
+    #вход по кнопке «Войти в аккаунт» на главной:
+    def test_click_on_constructer(self, open_main_page):
+        driver = open_main_page
+        driver.find_element(*ENTER_IN_BUTTON).click()
+        #вводим данные зарегестрированного пользователя в поля "Email" и "Пароль" и кликаем кнопку "Войти"
+        driver.find_element(*EMAIL_FIELD_ENTER).send_keys(new_email)
+        driver.find_element(*PASSWORD_FIELD_ENTER).send_keys(new_password)
+        driver.find_element(*ENTER_BUTTON_ENTER).click()
+        #клик на кнопку "Личный кабинет"
+        driver.find_element(*BUTTON_MY_CABINET).click()
+        #клик на кнопку "Конструктор"
+        driver.find_element(*BUTTON_CONSTRUCTOR).click()
+        #проверяем успешный вход в Конструктор(на странице присутствует кнопка "Оформить заказ")
+        assert WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((CHECK_OUT_BUTTON)))
 
-#проверка перехода по клику на логотип Stellar Burgers из Личного кабинета:
-#вход по кнопке «Войти в аккаунт» на главной:
-driver = webdriver.Chrome()
-driver.get(URL)
-driver.find_element(*ENTER_IN_BUTTON).click()
-#вводим данные зарегестрированного пользователя в поля "Email" и "Пароль" и кликаем кнопку "Войти"
-driver.find_element(*EMAIL_FIELD_ENTER).send_keys(new_email)
-driver.find_element(*PASSWORD_FIELD_ENTER).send_keys(new_password)
-driver.find_element(*ENTER_BUTTON_ENTER).click()
-#клик на кнопку "Личный кабинет"
-driver.find_element(*BUTTON_MY_CABINET).click()
-#клик на логотип Stellar Burgers
-driver.find_element(*LOGO_STELLAR_BURGERS).click()
-#проверяем успешный вход в Конструктор(на странице присутствует кнопка "Оформить заказ")
-WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((CHECK_OUT_BUTTON)))
-driver.quit()
+
+    #проверка перехода по клику на логотип Stellar Burgers из Личного кабинета:
+    #вход по кнопке «Войти в аккаунт» на главной:
+    def test_click_on_logo(self, open_main_page):
+        driver = open_main_page
+        driver.find_element(*ENTER_IN_BUTTON).click()
+        #вводим данные зарегестрированного пользователя в поля "Email" и "Пароль" и кликаем кнопку "Войти"
+        driver.find_element(*EMAIL_FIELD_ENTER).send_keys(new_email)
+        driver.find_element(*PASSWORD_FIELD_ENTER).send_keys(new_password)
+        driver.find_element(*ENTER_BUTTON_ENTER).click()
+        #клик на кнопку "Личный кабинет"
+        driver.find_element(*BUTTON_MY_CABINET).click()
+        #клик на логотип Stellar Burgers
+        driver.find_element(*LOGO_STELLAR_BURGERS).click()
+        #проверяем успешный вход в Конструктор(на странице присутствует кнопка "Оформить заказ")
+        assert WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((CHECK_OUT_BUTTON)))

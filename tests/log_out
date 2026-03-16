@@ -18,24 +18,25 @@ driver.find_element(*PASSWORD_FIELD).send_keys(new_password)
 driver.find_element(*LOGIN_BUTTON).click()
 driver.quit()
 
-#Проверка выхода по кнопке «Выйти» в личном кабинете:
-#вход по кнопке «Войти в аккаунт» на главной:
-driver = webdriver.Chrome()
-driver.get(URL)
-driver.find_element(*ENTER_IN_BUTTON).click()
-#вводим данные зарегестрированного пользователя в поля "Email" и "Пароль" и кликаем кнопку "Войти"
-driver.find_element(*EMAIL_FIELD_ENTER).send_keys(new_email)
-driver.find_element(*PASSWORD_FIELD_ENTER).send_keys(new_password)
-driver.find_element(*ENTER_BUTTON_ENTER).click()
-#клик на кнопку "Личный кабинет"
-driver.find_element(*BUTTON_MY_CABINET).click()
-#ожидание страницы с кнопкой  "Выйти"
-WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((LOG_OUT_BUTTON)))
-#клик на кнопку "Выйти"
-driver.find_element(*LOG_OUT_BUTTON).click()
-#проверяем успешный выход из аккаунта(на странице присутствует кнопка "Войти")
-WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located((ENTER_BUTTON)))
-driver.quit()
+class TestLog_Out:
+    #Проверка выхода по кнопке «Выйти» в личном кабинете:
+    #вход по кнопке «Войти в аккаунт» на главной:
+    def test_click_on_my_lk(self, open_main_page):
+        driver = open_main_page
+        driver.find_element(*ENTER_IN_BUTTON).click()
+        #вводим данные зарегестрированного пользователя в поля "Email" и "Пароль" и кликаем кнопку "Войти"
+        driver.find_element(*EMAIL_FIELD_ENTER).send_keys(new_email)
+        driver.find_element(*PASSWORD_FIELD_ENTER).send_keys(new_password)
+        driver.find_element(*ENTER_BUTTON_ENTER).click()
+        #клик на кнопку "Личный кабинет"
+        driver.find_element(*BUTTON_MY_CABINET).click()
+        #ожидание страницы с кнопкой  "Выйти"
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((LOG_OUT_BUTTON)))
+        #клик на кнопку "Выйти"
+        driver.find_element(*LOG_OUT_BUTTON).click()
+        #проверяем успешный выход из аккаунта(на странице присутствует кнопка "Войти")
+        assert WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located((ENTER_BUTTON)))
+
 
 
 

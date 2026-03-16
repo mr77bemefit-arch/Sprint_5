@@ -46,12 +46,6 @@ BUTTON_CONSTRUCTOR = (By.XPATH, ".//p[text()='Конструктор']")
 LOGO_STELLAR_BURGERS = (By.CLASS_NAME, 'AppHeader_header__logo__2D0X2')
 #кнопка "Выйти" в Личном кабинете
 LOG_OUT_BUTTON = (By.XPATH, ".//ul/li/button[text()='Выход']")
-#раздел "Булки"
-CHAPTER_ROLLS = (By.XPATH, ".//span[text()='Булки']")
-#раздел "Соусы"
-CHAPTER_SAUCES = (By.XPATH, ".//span[text()='Соусы']")
-#раздел "Начинки"
-CHAPTER_FILLINGS = (By.XPATH, ".//span[text()='Начинки']")
 #вкладка "Булки"
 BUNS_TAB = (By.XPATH, "//span[text()='Булки']/parent::div")
 #вкладка "Соусы"

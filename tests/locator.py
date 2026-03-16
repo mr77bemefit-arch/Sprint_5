@@ -11,11 +11,11 @@ ENTER_IN_BUTTON = (By.XPATH, ".//button[text()='Войти в аккаунт']")
 #ссылка "Зарегистрироваться"
 REG_BUTTON = (By.CLASS_NAME, 'Auth_link__1fOlj')
 #поле "Имя"
-USERNAME_FIELD = (By.XPATH, ".//fieldset[1]/div/div/input")
+USERNAME_FIELD = (By.XPATH, ".//label[text()='Имя']/parent::div/input")
 #поле "Email"
-EMAIL_FIELD = (By.XPATH, ".//fieldset[2]/div/div/input")
+EMAIL_FIELD = (By.XPATH, ".//label[text()='Email']/parent::div/input")
 #поле "Пароль"
-PASSWORD_FIELD = (By.XPATH, ".//fieldset[3]/div/div/input")
+PASSWORD_FIELD = (By.XPATH, ".//label[text()='Пароль']/parent::div/input")
 ##кнопка "Зарегистрироваться"
 LOGIN_BUTTON = (By.XPATH, ".//button[text()='Зарегистрироваться']")
 #кнопка "Войти"
@@ -23,9 +23,9 @@ ENTER_BUTTON =(By.XPATH, ".//button[text()='Войти']")
 #текст сообщения "Некорректный пароль"
 TEXT_MISSTAKE = (By.XPATH, ".//p[text()='Некорректный пароль']")
 #поле "Email" в форме входа
-EMAIL_FIELD_ENTER = (By.XPATH, ".//fieldset[1]/div/div/input")
+EMAIL_FIELD_ENTER = (By.XPATH, ".//label[text()='Email']/parent::div/input")
 #поле "Пароль" в форме входа
-PASSWORD_FIELD_ENTER = (By.XPATH, ".//fieldset[2]/div/div/input")
+PASSWORD_FIELD_ENTER = (By.XPATH, ".//label[text()='Пароль']/parent::div/input")
 #кнопка "Войти" на странице входа
 ENTER_BUTTON_ENTER =(By.XPATH, ".//button[text()='Войти']")
 #кнопка "Оформить заказ"

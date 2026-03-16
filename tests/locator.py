@@ -52,9 +52,9 @@ CHAPTER_ROLLS = (By.XPATH, ".//span[text()='Булки']")
 CHAPTER_SAUCES = (By.XPATH, ".//span[text()='Соусы']")
 #раздел "Начинки"
 CHAPTER_FILLINGS = (By.XPATH, ".//span[text()='Начинки']")
-#название первого соуса "Соус Spicy-X"
-TEXT_SAUS_SPICY= (By.XPATH, ".//p[text()='Соус Spicy-X']")
-#название первой булки "Флюоресцентная булка R2-D3"
-TEXT_BLUR_ROLL = (By.XPATH, ".//p[text()='Флюоресцентная булка R2-D3']")
-#название первой начинки "Мясо бессмертных моллюсков Protostomia"
-TEXT_FISH_MEAT = (By.XPATH, ".//p[text()='Мясо бессмертных моллюсков Protostomia']")
+#вкладка "Булки"
+BUNS_TAB = (By.XPATH, "//span[text()='Булки']/parent::div")
+#вкладка "Соусы"
+SAUCES_TAB = (By.XPATH, "//span[text()='Соусы']/parent::div")
+#вкладка "Начинки"
+FILLINGS_TAB = (By.XPATH, "//span[text()='Начинки']/parent::div")

@@ -3,23 +3,37 @@ from fixture import *
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
 
-#проверка переходов по разделам "Соусы" - "Начинки" - "Булки"
 driver = webdriver.Chrome()
 driver.get(URL)
-#переходим в раздел "Соусы"
-driver.find_element(*CHAPTER_SAUCES).click()
-#проверяем переход в раздел "Соусы"(на странице есть название первого соуса "Соус Spicy-X")
-WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((TEXT_SAUS_SPICY)))
-#переходим в раздел "Булки"
-driver.find_element(*CHAPTER_ROLLS).click()
-#проверяем переход в раздел "Булки"(на странице есть название первой булки "Флюоресцентная булка R2-D3")
-WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((TEXT_BLUR_ROLL)))
-#переходим в раздел "Начинки"
-driver.find_element(*CHAPTER_FILLINGS).click()
-#проверяем переход в раздел "Начинки"(на странице есть название первой начинки "Мясо бессмертных моллюсков Protostomia")
-WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((TEXT_FISH_MEAT)))
-driver.quit()
 
+class TestConstructorSections:
+    
+    def test_switch_to_sauces(self, driver):
+        wait = WebDriverWait(driver, 10)
+        driver.get("https://stellarburgers.education-services.ru/")
 
+        wait.until(EC.element_to_be_clickable(SAUCES_TAB)).click()
+        wait.until(lambda d: "tab_tab_type_current" in d.find_element(*SAUCES_TAB).get_attribute("class"))
+
+        assert "tab_tab_type_current" in driver.find_element(*SAUCES_TAB).get_attribute("class")
+
+    def test_switch_to_fillings(self, driver):
+        wait = WebDriverWait(driver, 10)
+        driver.get("https://stellarburgers.education-services.ru/")
+
+        wait.until(EC.element_to_be_clickable(FILLINGS_TAB)).click()
+        wait.until(lambda d: "tab_tab_type_current" in d.find_element(*FILLINGS_TAB).get_attribute("class"))
+
+        assert "tab_tab_type_current" in driver.find_element(*FILLINGS_TAB).get_attribute("class")
+
+    def test_switch_to_buns(self, driver):
+        wait = WebDriverWait(driver, 10)
+        driver.get("https://stellarburgers.education-services.ru/")
+
+        wait.until(EC.element_to_be_clickable(FILLINGS_TAB)).click()
+        wait.until(EC.element_to_be_clickable(BUNS_TAB)).click()
+        wait.until(lambda d: "tab_tab_type_current" in d.find_element(*BUNS_TAB).get_attribute("class"))
+
+        assert "tab_tab_type_current" in driver.find_element(*BUNS_TAB).get_attribute("class")

@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-
+ 
 #регистрация нового пользователя:
 new_email = generate_email()
 new_password = '123456'

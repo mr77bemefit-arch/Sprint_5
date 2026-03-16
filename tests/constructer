@@ -6,19 +6,19 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 class TestConstructor:
-    
+    #тест перехода к разделу "Соусы"
     def test_switch_to_sauces(self, open_main_page):
         driver = open_main_page
         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(SAUCES_TAB)).click()
         WebDriverWait(driver, 5).until(lambda d: "tab_tab_type_current" in d.find_element(*SAUCES_TAB).get_attribute("class"))
         assert "tab_tab_type_current" in driver.find_element(*SAUCES_TAB).get_attribute("class")
-
+    #тест перехода к разделу "Начинки"
     def test_switch_to_fillings(self, open_main_page):
         driver = open_main_page
         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(FILLINGS_TAB)).click()
         WebDriverWait(driver, 5).until(lambda d: "tab_tab_type_current" in d.find_element(*FILLINGS_TAB).get_attribute("class"))
         assert "tab_tab_type_current" in driver.find_element(*FILLINGS_TAB).get_attribute("class")
-
+    #тест перехода к разделу "Булки"
     def test_switch_to_buns(self, open_main_page):
         driver = open_main_page
         WebDriverWait(driver, 5).until(EC.element_to_be_clickable(FILLINGS_TAB)).click()

@@ -25,7 +25,7 @@ class TestRegistration:
         # проверка успешной авторизации
         assert WebDriverWait(driver, 3).until(EC.visibility_of_element_located(ENTER_BUTTON))
 
-    # проверка ошибки при пароле меньше 6 символов
+    # проверка появления ошибки при пароле меньше 6 символов
     def test_incorrect_password_registration(self, open_main_page):
         driver = open_main_page
 
@@ -41,5 +41,5 @@ class TestRegistration:
         # кликаем кнопку зарегистрироваться
         driver.find_element(*LOGIN_BUTTON).click()
 
-        # проверка появления ошибки
+        # проверка появления текста ошибки
         assert WebDriverWait(driver, 3).until(EC.visibility_of_element_located(TEXT_MISSTAKE))

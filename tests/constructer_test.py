@@ -1,4 +1,4 @@
-from locator import *
+from locator import Locators
 from fixture import *
 from selenium.webdriver.common.by import By
 from selenium import webdriver
@@ -6,16 +6,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 class TestConstructor:
-
     @pytest.mark.parametrize(
         "steps, target_tab",
         [
-            ([SAUCES_TAB], SAUCES_TAB),              # переход к "Соусы"
-            ([FILLINGS_TAB], FILLINGS_TAB),          # переход к "Начинки"
-            ([FILLINGS_TAB, BUNS_TAB], BUNS_TAB),    # переход к "Булки"
+            ([Locators.SAUCES_TAB], Locators.SAUCES_TAB),              # переход к "Соусы"
+            ([Locators.FILLINGS_TAB], Locators.FILLINGS_TAB),          # переход к "Начинки"
+            ([Locators.FILLINGS_TAB, Locators.BUNS_TAB], Locators.BUNS_TAB),    # переход к "Булки"
         ],
-        ids=["switch_to_sauces", "switch_to_fillings", "switch_to_buns"]
-    )
+        ids=["switch_to_sauces", "switch_to_fillings", "switch_to_buns"])
     def test_switch_between_constructor_tabs(self, open_main_page, steps, target_tab):
         driver = open_main_page
 

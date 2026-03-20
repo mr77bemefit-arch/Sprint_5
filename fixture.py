@@ -1,7 +1,8 @@
 import random
 import pytest
-from locator import *
+from locator import Locators
 from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 URL = "https://stellarburgers.education-services.ru/"
@@ -26,14 +27,14 @@ def registered_user():
     driver = webdriver.Chrome()
     driver.get(URL)
 
-    driver.find_element(*ENTER_IN_BUTTON).click()
-    driver.find_element(*REG_BUTTON).click()
-    driver.find_element(*USERNAME_FIELD).send_keys(name)
-    driver.find_element(*EMAIL_FIELD).send_keys(email)
-    driver.find_element(*PASSWORD_FIELD).send_keys(password)
-    driver.find_element(*LOGIN_BUTTON).click()
+    driver.find_element(*Locators.ENTER_IN_BUTTON).click()
+    driver.find_element(*Locators.REG_BUTTON).click()
+    driver.find_element(*Locators.USERNAME_FIELD).send_keys(name)
+    driver.find_element(*Locators.EMAIL_FIELD).send_keys(email)
+    driver.find_element(*Locators.PASSWORD_FIELD).send_keys(password)
+    driver.find_element(*Locators.LOGIN_BUTTON).click()
 
-    WebDriverWait(driver, 5).until(EC.visibility_of_element_located(ENTER_BUTTON_ENTER))
+    WebDriverWait(driver, 5).until(EC.visibility_of_element_located(Locators.ENTER_BUTTON_ENTER))
 
     driver.quit()
 

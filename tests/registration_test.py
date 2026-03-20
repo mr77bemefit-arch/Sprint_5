@@ -1,4 +1,4 @@
-from locator import *
+from locator import Locators
 from fixture import *
 from selenium.webdriver.common.by import By
 from selenium import webdriver
@@ -11,35 +11,35 @@ class TestRegistration:
         driver = open_main_page
 
         # переход к форме регистрации
-        driver.find_element(*ENTER_IN_BUTTON).click()
-        driver.find_element(*REG_BUTTON).click()
+        driver.find_element(*Locators.ENTER_IN_BUTTON).click()
+        driver.find_element(*Locators.REG_BUTTON).click()
 
         # заполняем поля регистрации валидными данными
-        driver.find_element(*USERNAME_FIELD).send_keys('Newuser1')
-        driver.find_element(*EMAIL_FIELD).send_keys(generate_email())
-        driver.find_element(*PASSWORD_FIELD).send_keys('123newuser')
+        driver.find_element(*Locators.USERNAME_FIELD).send_keys('Newuser1')
+        driver.find_element(*Locators.EMAIL_FIELD).send_keys(generate_email())
+        driver.find_element(*Locators.PASSWORD_FIELD).send_keys('123newuser')
 
         # кликаем кнопку зарегистрироваться
-        driver.find_element(*LOGIN_BUTTON).click()
+        driver.find_element(*Locators.LOGIN_BUTTON).click()
 
         # проверка успешной авторизации
-        assert WebDriverWait(driver, 3).until(EC.visibility_of_element_located(ENTER_BUTTON))
+        assert WebDriverWait(driver, 3).until(EC.visibility_of_element_located(Locators.ENTER_BUTTON))
 
     # проверка появления ошибки при пароле меньше 6 символов
     def test_incorrect_password_registration(self, open_main_page):
         driver = open_main_page
 
         # переход к форме регистрации
-        driver.find_element(*ENTER_IN_BUTTON).click()
-        driver.find_element(*REG_BUTTON).click()
+        driver.find_element(*Locators.ENTER_IN_BUTTON).click()
+        driver.find_element(*Locators.REG_BUTTON).click()
 
         # заполняем поля регистрации
-        driver.find_element(*USERNAME_FIELD).send_keys('Newuser2')
-        driver.find_element(*EMAIL_FIELD).send_keys(generate_email())
-        driver.find_element(*PASSWORD_FIELD).send_keys('12345')
+        driver.find_element(*Locators.USERNAME_FIELD).send_keys('Newuser2')
+        driver.find_element(*Locators.EMAIL_FIELD).send_keys(generate_email())
+        driver.find_element(*Locators.PASSWORD_FIELD).send_keys('12345')
 
         # кликаем кнопку зарегистрироваться
-        driver.find_element(*LOGIN_BUTTON).click()
+        driver.find_element(*Locators.LOGIN_BUTTON).click()
 
         # проверка появления текста ошибки
-        assert WebDriverWait(driver, 3).until(EC.visibility_of_element_located(TEXT_MISSTAKE))
+        assert WebDriverWait(driver, 3).until(EC.visibility_of_element_located(Locators.TEXT_MISSTAKE))

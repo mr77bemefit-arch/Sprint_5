@@ -1,0 +1,25 @@
+from locator import Locators
+from fixture import *
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+class TestConstructor:
+    @pytest.mark.parametrize(
+        "steps, target_tab",
+        [
+            ([Locators.SAUCES_TAB], Locators.SAUCES_TAB),              # переход к "Соусы"
+            ([Locators.FILLINGS_TAB], Locators.FILLINGS_TAB),          # переход к "Начинки"
+            ([Locators.FILLINGS_TAB, Locators.BUNS_TAB], Locators.BUNS_TAB),    # переход к "Булки"
+        ],
+        ids=["switch_to_sauces", "switch_to_fillings", "switch_to_buns"])
+    def test_switch_between_constructor_tabs(self, open_main_page, steps, target_tab):
+        driver = open_main_page
+
+        for tab in steps:
+            WebDriverWait(driver, 5).until(EC.element_to_be_clickable(tab)).click()
+
+        WebDriverWait(driver, 5).until(lambda d: "tab_tab_type_current" in d.find_element(*target_tab).get_attribute("class"))
+
+        assert "tab_tab_type_current" in driver.find_element(*target_tab).get_attribute("class")
